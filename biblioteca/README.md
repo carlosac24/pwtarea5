@@ -10,6 +10,11 @@ A continuación se listan 5 usuarios reales extraídos de la base de datos para 
 - **Contraseña:** `password`
 - **Rol:** Administrator
 
+### 1. bibliotecario
+- **Correo:** `jenifer.a.carpio@hotmail.com`
+- **Contraseña:** `user123`
+- **Rol:** Bibliotecario
+
 ### 2. Lector (Luis)
 - **Correo:** `luis.martinez@biblioteca.local`
 - **Contraseña:** `password`
@@ -29,5 +34,6 @@ A continuación se listan 5 usuarios reales extraídos de la base de datos para 
 - **Correo:** `carlos.rivera@biblioteca.local`
 - **Contraseña:** `password`
 - **Rol:** Reader
+
 
 
