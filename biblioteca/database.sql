@@ -57,3 +57,30 @@ CREATE TABLE IF NOT EXISTS transactions (
 INSERT INTO users (username, email, password, role_id)
 SELECT 'admin', 'admin@biblioteca.local', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', id FROM roles WHERE name = 'Administrator'
     AND NOT EXISTS (SELECT 1 FROM users WHERE email = 'admin@biblioteca.local');
+
+INSERT INTO users (username, email, password, role_id)
+SELECT new_users.username, new_users.email, new_users.password_hash, roles.id
+FROM (
+    SELECT 'ana.garcia' AS username, 'ana.garcia@biblioteca.local' AS email, '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi' AS password_hash UNION ALL
+    SELECT 'luis.martinez', 'luis.martinez@biblioteca.local', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi' UNION ALL
+    SELECT 'sofia.lopez', 'sofia.lopez@biblioteca.local', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi' UNION ALL
+    SELECT 'carlos.rivera', 'carlos.rivera@biblioteca.local', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi' UNION ALL
+    SELECT 'mariana.rojas', 'mariana.rojas@biblioteca.local', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi' UNION ALL
+    SELECT 'diego.torres', 'diego.torres@biblioteca.local', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi' UNION ALL
+    SELECT 'valeria.sanchez', 'valeria.sanchez@biblioteca.local', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi' UNION ALL
+    SELECT 'andres.mendoza', 'andres.mendoza@biblioteca.local', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi' UNION ALL
+    SELECT 'paula.gonzalez', 'paula.gonzalez@biblioteca.local', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi' UNION ALL
+    SELECT 'fernando.diaz', 'fernando.diaz@biblioteca.local', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi' UNION ALL
+    SELECT 'camila.ortega', 'camila.ortega@biblioteca.local', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi' UNION ALL
+    SELECT 'ricardo.perez', 'ricardo.perez@biblioteca.local', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi' UNION ALL
+    SELECT 'isabela.silva', 'isabela.silva@biblioteca.local', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi' UNION ALL
+    SELECT 'julian.herrera', 'julian.herrera@biblioteca.local', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi' UNION ALL
+    SELECT 'renata.vargas', 'renata.vargas@biblioteca.local', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi' UNION ALL
+    SELECT 'mateo.castro', 'mateo.castro@biblioteca.local', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi' UNION ALL
+    SELECT 'ximena.flores', 'ximena.flores@biblioteca.local', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi' UNION ALL
+    SELECT 'sebastian.nunez', 'sebastian.nunez@biblioteca.local', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi' UNION ALL
+    SELECT 'alejandra.campos', 'alejandra.campos@biblioteca.local', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi' UNION ALL
+    SELECT 'roberto.molina', 'roberto.molina@biblioteca.local', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi'
+) AS new_users
+JOIN roles ON roles.name = 'Reader'
+ON DUPLICATE KEY UPDATE username = VALUES(username);
